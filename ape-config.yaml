@@ -1,0 +1,6 @@
+plugins:
+  - name: hardhat
+
+ethereum:
+  local:
+    default_provider: hardhat

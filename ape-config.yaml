@@ -4,3 +4,6 @@ plugins:
 ethereum:
   local:
     default_provider: hardhat
+
+solidity:
+  optimize: false

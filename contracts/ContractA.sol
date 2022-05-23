@@ -15,13 +15,12 @@ contract ContractA {
     }
 
     function methodWithoutArguments() public payable {
-        contractB.methodB1("word", 7);
         contractB.methodB1("ice-cream", 36);
         contractB.methodB2(msg.sender);
         runTheJules[address(contractC)] = contractC.addressToValue(msg.sender);
         
-        // TODO: Partially fail
-        //contractB.alwaysFail(9);
+        // // TODO: Partially fail
+        // //contractB.alwaysFail(9);
         
         contractB.methodB1("lemondrop", 0);
         contractB.methodB1("snitches_get_stiches", 111);

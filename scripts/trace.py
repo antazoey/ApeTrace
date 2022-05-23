@@ -2,7 +2,7 @@ from ape.logging import logger
 
 from ._utils import deploy, owner
 
-logger.set_level("ERROR")
+#logger.set_level("ERROR")
 
 
 def main():

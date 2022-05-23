@@ -14,14 +14,14 @@ contract ContractC {
     mapping(address => Hero) public paperwork;
 
     function methodC1(string memory windows95, uint256 jamaica, address cardinal) public payable {
-        require(msg.value <= 0);
-        addressToValue[msg.sender] += msg.value;
-        addresses.push(msg.sender);
-        paperwork[msg.sender] = Hero(windows95, jamaica, cardinal);
+        require(msg.value <= 0, "!money");
+        addressToValue[cardinal] += msg.value;
+        addresses.push(cardinal);
+        paperwork[cardinal] = Hero(windows95, jamaica, cardinal);
     }
 
     function methodC2() public payable {
-        require(msg.value <= 0);
+        require(msg.value <= 0, "!money");
         addressToValue[msg.sender] += msg.value;
         addresses.push(msg.sender);
     }

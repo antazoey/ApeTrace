@@ -8,22 +8,49 @@ contract ContractA {
     ContractB public contractB;
     ContractC public contractC;
     mapping(address => uint256) public runTheJules;
+    string public sharedString = "";
+    address payable owner = payable(0x1e59ce931B4CFea3fe4B875411e280e173cB7A9C);
 
     constructor(ContractB addrb, ContractC addrc) {
         contractB = addrb;
         contractC = addrc;
     }
 
-    function methodWithoutArguments() public payable {
+    function callCallMe() public payable returns(uint256) {
+        (bool success,) = address(contractB).call(abi.encodeWithSignature("callMe(address)", msg.sender));
+        require(success);
+        return 3;
+    }
+
+    function callDelegateCall() public {
+        (bool success,) = address(contractB).delegatecall(abi.encodeWithSignature("setSharedString(string)", "testy"));
+        require(success);
+    }
+
+    function callDelegateCall2() public {
+        (bool success,) = address(contractB).delegatecall(abi.encodeWithSignature("setSharedAddress(address)", msg.sender));
+        require(success);
+    }
+
+    function methodWithoutArguments() public payable returns(bytes memory) {
         contractB.methodB1("ice-cream", 36);
+        
+        //bytes memory res = callCallMe();
+        (bool success, bytes memory res) = address(contractB).call(abi.encodeWithSignature("callMe(address)", msg.sender));
+        require(success);
+        
+        
         contractB.methodB2(msg.sender);
         runTheJules[address(contractC)] = contractC.addressToValue(msg.sender);
         
         // // TODO: Partially fail
         // //contractB.alwaysFail(9);
         
-        contractB.methodB1("lemondrop", 0);
+        uint256 val = contractB.bandPractice(msg.sender);
+        contractB.methodB1("lemondrop", val);
         contractB.methodB1("snitches_get_stiches", 111);
+
+        return res;
     }
 
     function methodWithSingleArgument(uint256 rtj) public payable returns(bool) {
@@ -35,4 +62,10 @@ contract ContractA {
         runTheJules[msg.sender] += val;
         return true;
     }
+
+    function goodbye() public {
+        selfdestruct(owner);
+    }
+
+    receive() external payable {}
 }

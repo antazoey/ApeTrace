@@ -10,12 +10,22 @@ contract ContractB {
     mapping(address => uint256) public bandPractice;
     mapping(address => string) public pumpkin;
     string public concatres = "";
+    string public sharedString = "";
+    address public sharedAddress = 0xF2Df0b975c0C9eFa2f8CA0491C2d1685104d2488;
 
     constructor(ContractC addr) {
         contractC = addr;
     }
 
-    function methodB1(string memory lolol, uint256 dynamo) public {
+    function setSharedString(string memory value) public {
+        sharedString = value;
+    }
+
+    function setSharedAddress(address value) public {
+        sharedAddress = value;
+    }
+
+    function methodB1(string memory lolol, uint dynamo) public {
         pumpkin[msg.sender] = lolol;
         
         // Turns out this should not be working!
@@ -23,8 +33,13 @@ contract ContractB {
         // string memory result = string.concat(converted_lols, " Captain Janeway");
         // concatres = result;
         
+        contractC.getSomeList();
         contractC.methodC1("simpler", dynamo, msg.sender);
         bandPractice[msg.sender] = bandPractice[msg.sender] + dynamo;
+    }
+
+    function callMe(address blue) public pure returns(address) {
+        return blue;
     }
 
     function methodB2(address trombone) public payable {

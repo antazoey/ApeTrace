@@ -25,4 +25,12 @@ contract ContractC {
         addressToValue[msg.sender] += msg.value;
         addresses.push(msg.sender);
     }
+
+    function getSomeList() public pure returns(uint128[3] memory) {
+        return [
+            3425311345134513461345134534531452345,
+            111344445534535353,
+            993453434534534534534977788884443333
+        ];
+    }
 }

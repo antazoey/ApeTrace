@@ -1,9 +1,14 @@
 plugins:
   - name: hardhat
+  - name: etherscan
+  - name: alchemy
 
 ethereum:
+  default_network: mainnet-fork
   local:
     default_provider: hardhat
+  mainnet:
+    default_provider: alchemy
 
 solidity:
   optimize: false

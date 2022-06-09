@@ -1,8 +1,13 @@
 import click
 from ape.cli import NetworkBoundCommand, network_option
 
-from ._utils import (account_factory, get_contracts, raw_option, show_trace,
-                     verbose_option)
+from ._utils import (
+    account_factory,
+    get_contracts,
+    raw_option,
+    show_trace,
+    verbose_option,
+)
 
 
 @click.command(cls=NetworkBoundCommand)

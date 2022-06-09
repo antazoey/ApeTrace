@@ -27,7 +27,7 @@ class AccountFactory:
 
         prompt = "Select an account to own these contracts"
         return get_user_selected_account(KeyfileAccount, prompt_message=prompt)
-    
+
     def __getitem__(self, index: int) -> AccountAPI:
         return accounts.test_accounts[index]
 

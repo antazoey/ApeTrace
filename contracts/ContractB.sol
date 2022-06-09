@@ -12,6 +12,7 @@ contract ContractB {
     string public concatres = "";
     string public sharedString = "";
     address public sharedAddress = 0xF2Df0b975c0C9eFa2f8CA0491C2d1685104d2488;
+    string public symbol = "SYMBOL";
 
     constructor(ContractC addr) {
         contractC = addr;

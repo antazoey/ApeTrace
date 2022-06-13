@@ -9,7 +9,6 @@ from ape.contracts import ContractInstance
 from ape.exceptions import NetworkError
 from ape.utils import cached_property
 from ape_accounts import KeyfileAccount
-from evm_trace import CallType, get_calltree_from_trace
 
 
 def is_local() -> bool:
@@ -75,15 +74,7 @@ raw_option = click.option("--raw", is_flag=True, help="Show the raw, non-pretty 
 def show_trace(receipt: ReceiptAPI, verbose: bool, raw: bool):
     click.echo()
     if raw:
-        root_node_kwargs = {
-            "gas_cost": receipt.gas_used,
-            "gas_limit": receipt.gas_limit,
-            "address": receipt.receiver,
-            "calldata": receipt.input_data,
-            "value": receipt.value,
-            "call_type": CallType.MUTABLE,
-        }
-        call_tree = get_calltree_from_trace(receipt.trace, **root_node_kwargs)
+        call_tree = networks.provider.get_call_tree(receipt.txn_hash)
         click.echo(repr(call_tree))
     else:
         receipt.show_trace(verbose=verbose)

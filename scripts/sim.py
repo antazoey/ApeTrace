@@ -20,7 +20,7 @@ def cli(network, verbose, raw, skip):
     contract_a, _, _ = get_contracts()
 
     if "methodWithoutArguments" not in skip:
-        receipt = contract_a.methodWithoutArguments(sender=account_factory.owner)
+        receipt = contract_a.methodWithoutArguments(sender=account_factory.owner, value=123)
         show_trace(receipt, verbose, raw)
         click.echo()
 

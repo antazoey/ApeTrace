@@ -20,7 +20,7 @@ To see the raw `evm-trace` package version of the trace display, use the `--raw`
 ape run show 0x... --raw
 ```
 
-There are some hard-coded transaction you can use as well with special keys, e.g.:
+There are some hard-coded transactions you can use as well via special keys, e.g.:
 
 ```bash
 ape run show fail

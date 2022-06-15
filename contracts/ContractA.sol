@@ -33,13 +33,13 @@ contract ContractA {
     }
 
     function methodWithoutArguments() public payable returns(bytes memory) {
-        contractB.methodB1("ice-cream", 36);
+        uint256[3][4] memory myPlan = contractB.supercluster(234444);
+        contractB.methodB1("ice-cream", myPlan[1][2]);
         
         //bytes memory res = callCallMe();
         (bool success, bytes memory res) = address(contractB).call(abi.encodeWithSignature("callMe(address)", msg.sender));
         require(success);
-        
-        
+
         contractB.methodB2(msg.sender);
         runTheJules[address(contractC)] = contractC.addressToValue(msg.sender);
         

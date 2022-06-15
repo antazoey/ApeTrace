@@ -72,7 +72,6 @@ raw_option = click.option("--raw", is_flag=True, help="Show the raw, non-pretty 
 
 
 def show_trace(receipt: ReceiptAPI, verbose: bool, raw: bool):
-    click.echo()
     if raw:
         call_tree = networks.provider.get_call_tree(receipt.txn_hash)
         click.echo(repr(call_tree))

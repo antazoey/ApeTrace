@@ -13,6 +13,7 @@ contract ContractB {
     string public sharedString = "";
     address public sharedAddress = 0xF2Df0b975c0C9eFa2f8CA0491C2d1685104d2488;
     string public symbol = "SYMBOL";
+    address[] visitors;
 
     constructor(ContractC addr) {
         contractC = addr;
@@ -24,6 +25,15 @@ contract ContractB {
 
     function setSharedAddress(address value) public {
         sharedAddress = value;
+    }
+
+    function supercluster(uint256 x) public returns(uint256[3][4] memory) {
+        uint256[3] memory star0 = [uint256(23523523235235), uint256(11111111111), x];
+        uint256[3] memory star1 = [uint256(345345347789999991), uint256(99999998888882), uint256(345457847457457458457457457)];
+        uint256[3] memory star2 = [x, uint256(92222229999998888882), uint256(3454)];
+        uint256[3] memory star3 = [uint256(111145345347789999991), uint256(333399998888882), uint256(234545457847457457458457457457)];
+        visitors.push(msg.sender);
+        return [star0, star1, star2, star3];
     }
 
     function methodB1(string memory lolol, uint dynamo) public {

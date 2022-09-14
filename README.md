@@ -1,5 +1,27 @@
 # The Ape Trace Project
 
+We sell trace and trace accessories.
+
+## Setup
+
+First, install plugins in your desired Python environment (likey a virtual-environment):
+
+```bash
+ape plugins install .
+```
+
+Then, use keyring to set your Alchemy API key:
+
+```bash
+ape keyring secrets set WEB3_ALCHEMY_PROJECT_ID
+```
+
+You, then, will be prompted for input.
+
+Alternatively, use an environment variable as per this [guide](https://github.com/ApeWorX/ape-alchemy/blob/main/README.md#quick-usage).
+
+## Quick Usage
+
 To see a trace, run:
 
 ```bash

@@ -5,6 +5,11 @@ import "./ContractB.sol";
 
 contract ContractA {
 
+    event Bobber(
+        address indexed sinker,
+        uint256 indexed hook
+    );
+
     ContractB public contractB;
     ContractC public contractC;
     mapping(address => uint256) public runTheJules;
@@ -14,6 +19,12 @@ contract ContractA {
     constructor(ContractB addrb, ContractC addrc) {
         contractB = addrb;
         contractC = addrc;
+    }
+
+    function gonefishin() public {
+        emit Bobber(address(msg.sender), 4);
+        emit Bobber(address(contractB), 4);
+        emit Bobber(address(contractB), 4);
     }
 
     function callCallMe() public payable returns(uint256) {

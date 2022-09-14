@@ -18,9 +18,12 @@ from ._utils import (
 def cli(network, verbose, raw, skip):
     _ = network  # Needed for NetworkBoundCommand
     contract_a, _, _ = get_contracts()
+    receipt = contract_a.methodWithoutArguments(sender=account_factory.owner, value=123)
 
     if "methodWithoutArguments" not in skip:
-        receipt = contract_a.methodWithoutArguments(sender=account_factory.owner, value=123)
+        receipt = contract_a.methodWithoutArguments(
+            sender=account_factory.owner, value=123
+        )
         show_trace(receipt, verbose, raw)
         click.echo()
 

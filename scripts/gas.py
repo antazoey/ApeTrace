@@ -1,16 +1,14 @@
 import click
 from ape.cli import NetworkBoundCommand, ape_cli_context, network_option
 
-from ._utils import raw_option, show_trace, txn_arg, verbose_option
+from ._utils import show_gas, txn_arg
 
 
 @click.command(cls=NetworkBoundCommand)
 @ape_cli_context()
 @network_option()
-@verbose_option
-@raw_option
 @txn_arg
-def cli(cli_ctx, network, verbose, raw, txn_hash):
+def cli(cli_ctx, network, txn_hash):
     _ = network  # Needed for NetworkBoundCommand
     if not txn_hash:
         return
@@ -22,6 +20,6 @@ def cli(cli_ctx, network, verbose, raw, txn_hash):
             continue
 
         receipt = cli_ctx.network_manager.provider.get_receipt(txn_hash_value)
-        show_trace(receipt, verbose, raw)
+        show_gas(receipt)
         if index < len(txn_hash) - 1:
             click.echo()

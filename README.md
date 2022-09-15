@@ -67,3 +67,12 @@ ape run sim --skip methodWithoutArguments
 ```
 
 The `--verbose` and `--raw` flags mentioned in the first section also work for the `sim` command.
+
+## Gas
+
+Additionally, view gas reports on receipts using this project.
+All of the same special receipts can be used for `gas` as they can for `show`.
+
+```bash
+ape run gas t0 --network ethereum:mainnet:alchemy
+```

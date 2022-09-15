@@ -20,6 +20,7 @@ def cli(cli_ctx, network, txn_hash):
             continue
 
         receipt = cli_ctx.network_manager.provider.get_receipt(txn_hash_value)
+        click.echo()
         show_gas(receipt)
         if index < len(txn_hash) - 1:
             click.echo()

@@ -76,3 +76,9 @@ All of the same special receipts can be used for `gas` as they can for `show`.
 ```bash
 ape run gas t0 --network ethereum:mainnet:alchemy
 ```
+
+To run a local gas simulation, do:
+
+```bash
+ape run sim-gas
+```

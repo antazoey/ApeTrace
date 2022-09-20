@@ -61,6 +61,10 @@ contract ContractB {
         contractC.methodC2();
     }
 
+    function callContractCMethodC3() public {
+        contractC.methodC3();
+    }
+
     function alwaysFail(uint256 pointlessArgument) public {
         if (true) {
             revert("I always fail :)");

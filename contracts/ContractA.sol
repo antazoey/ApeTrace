@@ -78,5 +78,10 @@ contract ContractA {
         selfdestruct(owner);
     }
 
+    function mergeGasReportTest() public {
+        contractB.callContractCMethodC3();
+        contractC.methodC3();
+    }
+
     receive() external payable {}
 }

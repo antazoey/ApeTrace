@@ -26,6 +26,10 @@ contract ContractC {
         addresses.push(msg.sender);
     }
 
+    function methodC3() public {
+        
+    }
+
     function getSomeList() public pure returns(uint128[3] memory) {
         return [
             3425311345134513461345134534531452345,

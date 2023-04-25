@@ -1,7 +1,7 @@
 import click
 from ape.cli import NetworkBoundCommand, ape_cli_context, network_option
 
-from lib.contracts import get_contracts
+from tracelib.contracts import get_contracts
 
 
 @click.command(cls=NetworkBoundCommand)

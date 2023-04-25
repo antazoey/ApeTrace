@@ -1,10 +1,10 @@
 import click
 from ape.cli import NetworkBoundCommand, network_option
 
-from lib.accounts import account_factory
-from lib.click_ext import raw_option, verbose_option
-from lib.contracts import get_contracts
-from lib.utils import show_trace
+from tracelib.accounts import account_factory
+from tracelib.click_ext import raw_option, verbose_option
+from tracelib.contracts import get_contracts
+from tracelib.utils import show_trace
 
 
 @click.command(cls=NetworkBoundCommand)

@@ -1,7 +1,7 @@
 import pytest
 
-from lib.accounts import account_factory
-from lib.contracts import deployer
+from tracelib.accounts import account_factory
+from tracelib.contracts import deployer
 
 
 @pytest.fixture

@@ -1,10 +1,10 @@
-from lib.accounts import account_factory
-from lib.contracts import deployer
+from tracelib.accounts import account_factory
+from tracelib.contracts import deployer
+from tracelib.utils import is_local
 
 
-def ape_init_extras(accounts):
-    network_name = accounts.provider.network.name
-    if network_name != "local":
+def ape_init_extras():
+    if not is_local():
         return {}
 
     return {

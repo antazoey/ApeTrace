@@ -1,7 +1,8 @@
 import click
 from ape.cli import NetworkBoundCommand, ape_cli_context, network_option
 
-from ._utils import raw_option, show_trace, txn_arg, verbose_option
+from lib.click_ext import raw_option, txn_arg, verbose_option
+from lib.utils import show_trace
 
 
 @click.command(cls=NetworkBoundCommand)

@@ -1,20 +1,18 @@
 plugins:
-  - name: hardhat     # For running simulations
+  - name: foundry     # For running simulations
   - name: etherscan   # For getting contract types
   - name: alchemy     # For greater access to transactions and fork mode
   - name: keyring     # For storing parity URI and Alchemy API key
-
-keyring:
-  # Makes secrets readable in plugins
-  set_env_vars: true
 
 ethereum:
   # Use fork mode for access to wide range of txns
   default_network: mainnet-fork
   local:
-    default_provider: hardhat
+    default_provider: foundry
   mainnet:
     default_provider: alchemy
+  mainnet_fork:
+    default_provider: foundry
 
 solidity:
   # For debugging compiler logic

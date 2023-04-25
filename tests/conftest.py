@@ -1,28 +1,29 @@
 import pytest
 
-
-@pytest.fixture
-def owner(accounts):
-    return accounts[0]
+from lib.accounts import account_factory
+from lib.contracts import deployer
 
 
 @pytest.fixture
-def caller(accounts):
-    return accounts[1]
+def owner():
+    return account_factory.owner
 
 
 @pytest.fixture
-def contract_c(project, owner):
-    return project.ContractC.deploy(sender=owner)
+def caller():
+    return account_factory[1]
 
 
 @pytest.fixture
-def contract_b(project, contract_c, owner):
-    return project.ContractB.deploy(contract_c.address, sender=owner)
+def contract_c():
+    return deployer.contract_c
 
 
 @pytest.fixture
-def contract_a(project, contract_b, contract_c, owner):
-    return project.ContractA.deploy(
-        contract_b.address, contract_c.address, sender=owner
-    )
+def contract_b():
+    return deployer.contract_b
+
+
+@pytest.fixture
+def contract_a():
+    return deployer.contract_a

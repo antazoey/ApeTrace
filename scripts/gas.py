@@ -1,7 +1,8 @@
 import click
 from ape.cli import NetworkBoundCommand, ape_cli_context, network_option
 
-from ._utils import show_gas, txn_arg
+from lib.click_ext import txn_arg
+from lib.utils import show_gas
 
 
 @click.command(cls=NetworkBoundCommand)

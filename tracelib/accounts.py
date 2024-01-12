@@ -1,27 +1,28 @@
 from functools import cached_property
 
-from ape import accounts, networks
 from ape.api import AccountAPI
 from ape.cli import get_user_selected_account
+from ape.utils import ManagerAccessMixin
 from ape_accounts.accounts import KeyfileAccount
+from ape_ethereum.ecosystem import NETWORKS
 
-from tracelib.utils import is_local
 
-
-class AccountFactory:
+class AccountFactory(ManagerAccessMixin):
     @cached_property
     def owner(self) -> AccountAPI:
-        if is_local():
+        if self.provider.network.is_dev:
             return self[0]
 
-        elif networks.provider.network.name == "rinkeby":
-            return accounts.load("metamask0")
+        elif self.provider.network.name in NETWORKS:
+            return self.account_manager.load("metamask0")
 
         prompt = "Select an account to own these contracts"
-        return get_user_selected_account(prompt_message=prompt, account_type=KeyfileAccount)
+        return get_user_selected_account(
+            prompt_message=prompt, account_type=KeyfileAccount
+        )
 
     def __getitem__(self, index: int) -> AccountAPI:
-        return accounts.test_accounts[index]
+        return self.account_manager.test_accounts[index]
 
 
 account_factory = AccountFactory()

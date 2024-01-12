@@ -1,11 +1,5 @@
 import click
-from ape import networks
 from ape.api import ReceiptAPI
-from ape.api.networks import LOCAL_NETWORK_NAME
-
-
-def is_local() -> bool:
-    return networks.provider.network.name in (LOCAL_NETWORK_NAME, "mainnet-fork")
 
 
 class TxnConstants:
@@ -32,7 +26,7 @@ def show_gas(receipt: ReceiptAPI):
 
 def show_trace(receipt: ReceiptAPI, verbose: bool, raw: bool):
     if raw:
-        call_tree = networks.provider.get_call_tree(receipt.txn_hash)
-        click.echo(repr(call_tree))
+        call_tree = receipt.trace.get_raw_calltree()
+        click.echo(call_tree.model_dumps(mode="json", by_alias=True))
     else:
         receipt.show_trace(verbose=verbose)

@@ -29,7 +29,7 @@ class Deployer(ManagerAccessMixin):
         )
 
     def _(self, name: str) -> ContractContainer:
-        return self.project_manager.get_contract(name)
+        return self.local_project.get_contract(name)
 
 
 deployer = Deployer()

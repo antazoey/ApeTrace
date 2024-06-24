@@ -1,5 +1,5 @@
 import click
-from ape.cli import NetworkBoundCommand, network_option
+from ape.cli import ConnectedProviderCommand
 
 from tracelib.accounts import account_factory
 from tracelib.click_ext import raw_option, verbose_option
@@ -7,13 +7,11 @@ from tracelib.contracts import get_contracts
 from tracelib.utils import show_trace
 
 
-@click.command(cls=NetworkBoundCommand)
-@network_option()
+@click.command(cls=ConnectedProviderCommand)
 @verbose_option
 @raw_option
 @click.option("--skip", multiple=True)
-def cli(network, verbose, raw, skip):
-    _ = network  # Needed for NetworkBoundCommand
+def cli(verbose, raw, skip):
     contract_a, _, _ = get_contracts()
     receipt = contract_a.methodWithoutArguments(sender=account_factory.owner, value=123)
 

@@ -1,18 +1,16 @@
 import click
-from ape.cli import NetworkBoundCommand, ape_cli_context, network_option
+from ape.cli import ConnectedProviderCommand, ape_cli_context
 
 from tracelib.click_ext import raw_option, txn_arg, verbose_option
 from tracelib.utils import show_trace
 
 
-@click.command(cls=NetworkBoundCommand)
+@click.command(cls=ConnectedProviderCommand)
 @ape_cli_context()
-@network_option()
 @verbose_option
 @raw_option
 @txn_arg
-def cli(cli_ctx, network, verbose, raw, txn_hash):
-    _ = network  # Needed for NetworkBoundCommand
+def cli(cli_ctx, verbose, raw, txn_hash, provider):
     if not txn_hash:
         return
 
@@ -22,7 +20,7 @@ def cli(cli_ctx, network, verbose, raw, txn_hash):
             cli_ctx.logger.error("Incorrect txn hash '{txn_hash}'.")
             continue
 
-        receipt = cli_ctx.network_manager.provider.get_receipt(txn_hash_value)
+        receipt = provider.get_receipt(txn_hash_value)
         show_trace(receipt, verbose, raw)
         if index < len(txn_hash) - 1:
             click.echo()

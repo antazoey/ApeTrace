@@ -17,3 +17,4 @@ ethereum:
 solidity:
   # For debugging compiler logic
   optimize: false
+  version: 0.8.4

@@ -13,11 +13,17 @@ contract ContractC {
 
     mapping(address => Hero) public paperwork;
 
+    event EventC(
+        address indexed sinker,
+        uint256 indexed hook
+    );
+
     function methodC1(string memory windows95, uint256 jamaica, address cardinal) public payable {
         require(msg.value <= 0, "!money");
         addressToValue[cardinal] += msg.value;
         addresses.push(cardinal);
         paperwork[cardinal] = Hero(windows95, jamaica, cardinal);
+        emit EventC(msg.sender, 3412);
     }
 
     function methodC2() public payable {

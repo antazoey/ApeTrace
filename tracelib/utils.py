@@ -26,7 +26,7 @@ def show_gas(receipt: ReceiptAPI):
 
 def show_trace(receipt: ReceiptAPI, verbose: bool, raw: bool):
     if raw:
-        call_tree = receipt.trace.get_raw_calltree()
-        click.echo(call_tree)
+        call_tree = receipt.trace.get_calltree()
+        click.echo(str(call_tree))
     else:
         receipt.show_trace(verbose=verbose)
